@@ -93,9 +93,10 @@ export const ButtonArea = () => {
   }]
 
     return (
-<div class="items">
+<div className="items">
         {buttons.map((item, i)=>{
-            return <Button clsNm={item.clsNm} label={item.label}/>
+            // return <Button key={i} clsNm={item.clsNm} label={item.label}/>
+            return <Button key={i} {...item}/>
         })}
         </div>
         )

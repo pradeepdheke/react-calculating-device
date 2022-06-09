@@ -5,10 +5,10 @@ import { Display } from './components/Display';
 function App() {
   return (
     <div className="App">
-      <div class="wrapper">
+      <div className="wrapper">
 			<h1>Prank calculator 🤣</h1>
 
-			<div class="mainParent">
+			<div className="mainParent">
 				{/* <!-- display area --> */}
 			<Display/>
 				{/* <!-- buttons --> */}
