@@ -1,7 +1,8 @@
 import React from 'react'
 
-export const Button = ({clsNm, label}) => {
+export const Button = ({clsNm, label, handleOnClick}) => {
+    
   return (
-    <button className={clsNm}>{label}</button>
+    <button className={clsNm} onClick={()=>handleOnClick(label)}>{label}</button>
   )
 }
