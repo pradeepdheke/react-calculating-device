@@ -8,7 +8,7 @@ const operators = ["+", "-", "*", "/", "%"]
 function App() {
   const [str, setStr] = useState("")
   const [isPrank, setIsPrank] = useState(false)
-
+  const [lastOperators, setLastOperators] = useState("")
   const [audio] = useState(new Audio(b))
 
 const handleOnClick = (value) => {
@@ -28,6 +28,31 @@ if (value === "C") {
   const temStr = str.slice(0, -1)
   setStr(temStr)
   return
+}
+
+if (operators.includes(value)) {
+  setLastOperators(value)
+  const lastChar = str.slice(-1)
+  if (operators.includes(lastChar)) {
+    const strWithoutLastChar = str.slice(0, -1)
+    setStr(strWithoutLastChar + value)
+    return
+  }
+}
+
+if (value === ".") {
+  if (lastOperators) {
+    const positionOfLastOperator = str.lastIndexOf(lastOperators)
+    const afterLastOperator = str.slice(positionOfLastOperator + 1)
+
+    if (afterLastOperator.includes(".")) {
+      return
+    } 
+  } else {
+    if (str.includes(".")) {
+      return
+    }
+  }
 }
 
   setStr(str + value)
