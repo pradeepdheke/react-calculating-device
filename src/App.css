@@ -21,7 +21,7 @@ body {
 	box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.25);
 }
 
-.result {
+.display {
 	border: 1px solid rgba(0, 0, 0, 0.25);
 	padding: 1rem;
 	border-radius: 10px;
@@ -119,10 +119,10 @@ body {
 }
 
 .prank {
-	animation: shake 0.3s ease-in;
+	animation: bounce 0.5s ease-in;
 }
 
-@keyframes shake {
+@keyframes bounce {
 	0% {
 		transform: translateX(10px);
 	}
@@ -135,4 +135,28 @@ body {
 	100% {
 		transform: translateX(-10px);
 	}
+}
+
+.prank {
+	color: red;
+	font: bold;
+	animation: bounce 3s case-in;
+}
+
+
+@keyframes bounce {
+	0% {
+		transform: translateX(10px);
+	}
+
+	50% {
+		transform: translateX(-20px);
+	}
+	75% {
+		transform: translateX(10px);
+	}
+	100% {
+		transform: translateX(-10px);
+	}
+
 }

@@ -2,11 +2,17 @@ import { useState } from 'react';
 import './App.css';
 import { ButtonArea } from './components/ButtonArea';
 import { Display } from './components/Display';
+import b from './b.wav'
 
+const operators = ["+", "-", "*", "/", "%"]
 function App() {
   const [str, setStr] = useState("")
+  const [isPrank, setIsPrank] = useState(false)
+
+  const [audio] = useState(new Audio(b))
 
 const handleOnClick = (value) => {
+  isPrank && setIsPrank(false)
 
   if (value=== "AC") {
 
@@ -28,8 +34,16 @@ if (value === "C") {
 }
 
 const onTotal = () => {
-  const ttl = eval(str)
+  const prankVal = randomNumber()
+  prankVal>0 && audio.play() && setIsPrank(true)
+  const ttl = eval(str) + prankVal
   setStr(ttl.toFixed(2).toString())
+}
+
+const randomNumber = () => {
+  const num = Math.ceil(Math.random() * 10)
+
+  return num > 3 ? 0 : num
 }
 
   return (
@@ -39,7 +53,7 @@ const onTotal = () => {
 
 			<div className="mainParent">
 				{/* <!-- display area --> */}
-			<Display str={str}/>
+			<Display str={str} isPrank = {isPrank}/>
 				{/* <!-- buttons --> */}
 
         <ButtonArea handleOnClick={handleOnClick}/>
